@@ -1,4 +1,5 @@
 // import type { Metadata } from "next";
+import { NavBar } from '@/components/laypout';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -16,6 +17,8 @@ export default function Layout({
     <html lang="en">
       <body className={inter.className}>
         <div className="h-screen overflow-auto">
+          <NavBar />
+
           {children}
         </div>
       </body>
