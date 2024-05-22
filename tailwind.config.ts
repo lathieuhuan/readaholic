@@ -22,28 +22,28 @@ const config = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          bg: 'hsl(var(--primary-bg))',
+          fg: 'hsl(var(--primary-fg))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+        danger: {
+          bg: 'hsl(var(--danger-bg))',
+          fg: 'hsl(var(--danger-fg))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          bg: 'hsl(var(--accent-bg))',
+          fg: 'hsl(var(--accent-fg))',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          bg: 'hsl(var(--popover-bg))',
+          fg: 'hsl(var(--popover-fg))',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
