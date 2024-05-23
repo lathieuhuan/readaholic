@@ -2,10 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config = {
   darkMode: ['class'],
-  content: [
-    './src/**/*.{ts,tsx}',
-  ],
-  prefix: '',
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     container: {
       center: true,
@@ -16,8 +13,8 @@ const config = {
     },
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
+        // border: 'hsl(var(--border))',
+        // input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -25,18 +22,18 @@ const config = {
           bg: 'hsl(var(--primary-bg))',
           fg: 'hsl(var(--primary-fg))',
         },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
+        // secondary: {
+        //   DEFAULT: 'hsl(var(--secondary))',
+        //   foreground: 'hsl(var(--secondary-foreground))',
+        // },
         danger: {
           bg: 'hsl(var(--danger-bg))',
           fg: 'hsl(var(--danger-fg))',
         },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
+        // muted: {
+        //   DEFAULT: 'hsl(var(--muted))',
+        //   foreground: 'hsl(var(--muted-foreground))',
+        // },
         accent: {
           bg: 'hsl(var(--accent-bg))',
           fg: 'hsl(var(--accent-fg))',
@@ -45,15 +42,13 @@ const config = {
           bg: 'hsl(var(--popover-bg))',
           fg: 'hsl(var(--popover-fg))',
         },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+        // card: {
+        //   DEFAULT: 'hsl(var(--card))',
+        //   foreground: 'hsl(var(--card-foreground))',
+        // },
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+      boxShadow: {
+        popover: '0 5px 10px rgba(0,0,0,0.15)',
       },
       keyframes: {
         'accordion-down': {

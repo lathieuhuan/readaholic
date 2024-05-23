@@ -1,5 +1,5 @@
 // import type { Metadata } from "next";
-import { NavBar } from '@/components/laypout';
+import { NavBar, PageFrame } from '@/components/laypout';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -15,12 +15,11 @@ export default function Layout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="h-screen overflow-auto">
-          <NavBar />
+      <body className={`${inter.className} min-h-dvh`}>
+        <NavBar />
+        <div className="h-14" />
 
-          {children}
-        </div>
+        <PageFrame>{children}</PageFrame>
       </body>
     </html>
   );
