@@ -7,9 +7,10 @@ import { cn } from '@/lib/utils';
 const buttonVariants = cva(null, {
   variants: {
     variant: {
-      primary: 'bg-primary-bg text-primary-fg hover:bg-primary-bg/90',
+      default: 'bg-background text-foreground border border-border hover:bg-primary-bg/20',
+      primary: 'bg-primary-bg text-primary-fg hover:bg-primary-bg/80',
       // secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-      danger: 'bg-danger-bg text-danger-fg hover:bg-danger-bg/90',
+      danger: 'bg-danger-bg text-danger-fg hover:bg-danger-bg/80',
       // outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
       // ghost: 'hover:bg-accent hover:text-accent-foreground',
       // link: 'text-primary underline-offset-4 hover:underline',
@@ -22,7 +23,7 @@ const buttonVariants = cva(null, {
     },
   },
   defaultVariants: {
-    variant: 'primary',
+    variant: 'default',
     size: 'md',
   },
 });

@@ -1,6 +1,8 @@
 // import type { Metadata } from "next";
-import { NavBar, PageFrame } from '@/components/laypout';
 import { Inter } from 'next/font/google';
+import { SignedInNavBar } from '@/features/signed-in-nav-bar';
+import { PageFrame } from '@/components/layout/page-frame';
+import { LayoutProps } from './types';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -8,15 +10,11 @@ const inter = Inter({ subsets: ['latin'] });
 //   title: "Readaholic",
 // };
 
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Layout({ children, params }: LayoutProps) {
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-dvh`}>
-        <NavBar />
+        <SignedInNavBar prePath={params.lang} />
         <div className="h-14" />
 
         <PageFrame>{children}</PageFrame>
