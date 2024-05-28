@@ -20,7 +20,7 @@ export interface InputProps
   size?: InputSize;
   suffix?: React.ReactNode;
 }
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ wrapperCls, suffix, className, size = 'medium', ...inputProps }, ref) => {
     const onclickWrapper = (e: React.MouseEvent<HTMLDivElement>) => {
       if ('tagName' in e.target && e.target.tagName !== 'INPUT') {
@@ -48,3 +48,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+Input.displayName = 'Input';
+
+export { Input };

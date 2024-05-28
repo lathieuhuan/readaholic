@@ -5,14 +5,11 @@ import { NavMenu } from '@/components/ui/nav-menu';
 import { BooksSearchInput } from '../books-search-input';
 import styles from './header.module.css';
 
-interface HeaderProps {
-  prePath?: string;
-}
-export function Header({ prePath = '' }: HeaderProps) {
+export function Header() {
   return (
     <div className={`fixed top-0 w-full z-50 ${styles.header}`}>
       <div className="flex items-center gap-4">
-        <Link href={`/${prePath}`} className="text-2xl font-bold">
+        <Link href={`/`} className="text-2xl font-bold">
           Readaholic
         </Link>
 
@@ -22,12 +19,12 @@ export function Header({ prePath = '' }: HeaderProps) {
               {
                 key: 'home',
                 label: 'Home',
-                link: `/${prePath}`,
+                link: `/`,
               },
               {
                 key: 'my-books',
                 label: 'My Books',
-                link: [prePath, 'my-books'],
+                link: 'my-books',
               },
               {
                 key: 'browse',
@@ -36,12 +33,12 @@ export function Header({ prePath = '' }: HeaderProps) {
                   {
                     key: 'recommendations',
                     label: 'Recommendations',
-                    link: [prePath, 'recommendations'],
+                    link: 'recommendations',
                   },
                   {
                     key: 'new-releases',
                     label: 'New Releases',
-                    link: [prePath, 'new-releases'],
+                    link: 'new-releases',
                   },
                 ],
               },
@@ -61,7 +58,7 @@ export function Header({ prePath = '' }: HeaderProps) {
                   {
                     key: 'profile',
                     label: 'Profile',
-                    link: [prePath, 'profile'],
+                    link: 'profile',
                   },
                   'divider',
                   {

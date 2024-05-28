@@ -4,9 +4,9 @@ import { ObviousLink } from '@/components/ui/obvious-link';
 import { BooksSearchInput } from '../books-search-input';
 
 interface CurrentlyReadingProps {
-  lang?: string;
+  // t: 
 }
-export function CurrentlyReading(props: CurrentlyReadingProps) {
+export function CurrentlyReading() {
   return (
     <div className="space-y-3">
       <h3 className="text-lg font-bold">Currently Reading</h3>
@@ -20,9 +20,9 @@ export function CurrentlyReading(props: CurrentlyReadingProps) {
       </div>
 
       <div className="flex gap-1 text-sm">
-        <ObviousLink href={[props.lang, 'recommendations']}>Recommendations</ObviousLink>
+        <ObviousLink href={'recommendations'}>Recommendations</ObviousLink>
         <span>•</span>
-        <ObviousLink href={[props.lang, 'new-releases']}>New releases</ObviousLink>
+        <ObviousLink href={'new-releases'}>New releases</ObviousLink>
       </div>
     </div>
   );

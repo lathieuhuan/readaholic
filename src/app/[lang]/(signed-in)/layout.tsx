@@ -10,11 +10,11 @@ const inter = Inter({ subsets: ['latin'] });
 //   title: "Readaholic",
 // };
 
-export default function Layout({ children, params }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-dvh`}>
-        <Header prePath={params.lang} />
+        <Header />
         <div className="h-14" />
 
         <PageFrame>{children}</PageFrame>
