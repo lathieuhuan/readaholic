@@ -6,8 +6,8 @@ import { Divider } from '@/components/ui/divider';
 
 export default function Home({ params: { lang } }: PageProps) {
   return (
-    <main className="flex">
-      <div className="w-80 space-y-4">
+    <main className="flex gap-4">
+      <div className="w-72 space-y-4">
         <CurrentlyReading lang={lang} />
         <Divider />
         <Bookshelves />
@@ -15,7 +15,7 @@ export default function Home({ params: { lang } }: PageProps) {
 
       <div className="grow">Updates</div>
 
-      <div className="w-80">News & Interviews</div>
+      <div className="w-72">News & Interviews</div>
     </main>
   );
 }

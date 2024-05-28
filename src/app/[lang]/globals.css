@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: 45 11% 93%;
+    --background: 45 10% 95%;
     --foreground: 228 100% 5%;
 
     /* --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%; */
 
-    --popover-bg: 45 4% 96%;
+    --popover-bg: 45 6% 98%;
     --popover-fg: 228 100% 5%;
 
     --primary-bg: 45 100% 50%;
@@ -32,8 +32,13 @@
     --border: 45 35% 65%;
     --ring: 228 100% 5%;
 
-    --color-link: hsl(174, 100%, 26%);
+    --color-link: hsl(173, 100%, 22%);
     --color-divider: hsl(0, 0%, 85%);
+  }
+
+  .dark {
+    --background: 228 100% 5%;
+    --foreground: 45 10% 95%;
   }
 }
 

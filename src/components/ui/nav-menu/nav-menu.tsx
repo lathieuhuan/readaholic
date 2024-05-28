@@ -1,6 +1,4 @@
-'use client';
 import clsx, { ClassValue } from 'clsx';
-import { useState } from 'react';
 import { CaretDown } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 import { constructUrl, ConstructableUrl } from '@/utils/construct-url';
@@ -35,57 +33,47 @@ export interface NavMenuProps {
   items: (NavMenuItemBranchModel | NavMenuItemLeafModel)[];
 }
 export const NavMenu = ({ listCls, items }: NavMenuProps) => {
-  const [activeBranch, setActiveBranch] = useState('');
   const itemCls = 'p-2 rounded hover:bg-accent-bg hover:text-accent-fg';
 
-  const onClickBranch = (branchKey: string) => {
-    setActiveBranch(activeBranch === branchKey ? '' : branchKey);
-  };
-
   return (
-    <div>
+    <nav>
       <ul className={clsx('flex', listCls)}>
         {items.map((item) => {
           const isBranch = itemIsBranch(item);
           const { withArrow = isBranch && typeof item.label === 'string' ? true : false } = item;
 
           return (
-            <li key={item.key} className="relative">
+            <li key={item.key} className="relative group">
               {isBranch ? (
                 <>
-                  <button
-                    className={`${itemCls} flex gap-1 items-center`}
-                    onClick={() => onClickBranch(item.key)}
-                  >
+                  <span className={`${itemCls} flex gap-1 items-center cursor-default`}>
                     {item.label}
                     {withArrow && <CaretDown size={16} />}
-                  </button>
+                  </span>
 
-                  {activeBranch && (
-                    <div className="absolute top-full left-0 z-10 p-2 bg-popover-bg text-popover-fg rounded shadow-popover">
-                      <ul>
-                        {item.children.map((child, childIndex) => {
-                          if (child === 'divider') {
-                            return (
-                              <li key={childIndex} className="my-2">
-                                <Divider />
-                              </li>
-                            );
-                          }
+                  <div className="absolute top-full left-0 z-10 p-2 bg-popover-bg text-popover-fg rounded shadow-popover hidden group-hover:block">
+                    <ul>
+                      {item.children.map((child, childIndex) => {
+                        if (child === 'divider') {
                           return (
-                            <li key={child.key ?? childIndex}>
-                              <Link
-                                href={constructUrl(child.link)}
-                                className="px-2 py-1 block rounded hover:bg-accent-bg hover:text-accent-fg"
-                              >
-                                {child.label}
-                              </Link>
+                            <li key={childIndex} className="my-2">
+                              <Divider />
                             </li>
                           );
-                        })}
-                      </ul>
-                    </div>
-                  )}
+                        }
+                        return (
+                          <li key={child.key ?? childIndex}>
+                            <Link
+                              href={constructUrl(child.link)}
+                              className="px-2 py-1 block rounded hover:bg-accent-bg hover:text-accent-fg"
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </>
               ) : (
                 <Link href={constructUrl(item.link)} className={`${itemCls} block`}>
@@ -96,6 +84,6 @@ export const NavMenu = ({ listCls, items }: NavMenuProps) => {
           );
         })}
       </ul>
-    </div>
+    </nav>
   );
 };

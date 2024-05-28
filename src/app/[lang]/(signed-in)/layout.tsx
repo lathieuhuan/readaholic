@@ -1,6 +1,6 @@
 // import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
-import { SignedInNavBar } from '@/features/signed-in-nav-bar';
+import { Header } from '@/features/header';
 import { PageFrame } from '@/components/layout/page-frame';
 import { LayoutProps } from './types';
 
@@ -14,7 +14,7 @@ export default function Layout({ children, params }: LayoutProps) {
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-dvh`}>
-        <SignedInNavBar prePath={params.lang} />
+        <Header prePath={params.lang} />
         <div className="h-14" />
 
         <PageFrame>{children}</PageFrame>

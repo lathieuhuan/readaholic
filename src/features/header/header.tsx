@@ -2,15 +2,15 @@ import { User } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 
 import { NavMenu } from '@/components/ui/nav-menu';
-import { NavBarFrame } from '@/components/layout/nav-bar-frame';
 import { BooksSearchInput } from '../books-search-input';
+import styles from './header.module.css';
 
-interface SignedInNavBar {
+interface HeaderProps {
   prePath?: string;
 }
-export function SignedInNavBar({ prePath = '' }: SignedInNavBar) {
+export function Header({ prePath = '' }: HeaderProps) {
   return (
-    <NavBarFrame>
+    <div className={`fixed top-0 w-full z-50 ${styles.header}`}>
       <div className="flex items-center gap-4">
         <Link href={`/${prePath}`} className="text-2xl font-bold">
           Readaholic
@@ -75,6 +75,6 @@ export function SignedInNavBar({ prePath = '' }: SignedInNavBar) {
           />
         </div>
       </div>
-    </NavBarFrame>
+    </div>
   );
 }
