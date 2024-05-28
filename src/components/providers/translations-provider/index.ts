@@ -1,1 +1,1 @@
-export { TranslationsProvider as default } from './translations-provider';
+export * from './translations-provider';

@@ -1,10 +1,9 @@
-// import { Button } from '@/components/ui/button';
+import initTranslations from '@/internationalization';
 import { Bookshelves } from '@/features/bookshelves';
 import { CurrentlyReading } from '@/features/currently-reading';
-import { PageProps } from './types';
 import { Divider } from '@/components/ui/divider';
-import initTranslations from '@/internationalization';
-import TranslationsProvider from '@/components/providers/translations-provider';
+import { TranslationsProvider } from '@/components/providers/translations-provider';
+import { PageProps } from './types';
 
 export default async function Home({ params: { lang } }: PageProps) {
   const { t, options, services } = await initTranslations(lang);
