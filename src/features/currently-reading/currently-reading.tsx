@@ -3,9 +3,6 @@ import Image from 'next/image';
 import { ObviousLink } from '@/components/ui/obvious-link';
 import { BooksSearchInput } from '../books-search-input';
 
-interface CurrentlyReadingProps {
-  // t: 
-}
 export function CurrentlyReading() {
   return (
     <div className="space-y-3">

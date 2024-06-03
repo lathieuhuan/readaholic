@@ -7,7 +7,5 @@ export interface ObviousLinkProps extends Omit<React.ComponentProps<typeof Link>
 }
 
 export const ObviousLink = ({ className, href, ...rest }: ObviousLinkProps) => {
-  return (
-    <Link className={clsx('text-[var(--color-link)] hover:underline', className)} {...rest} href={constructUrl(href)} />
-  );
+  return <Link className={clsx('text-link', className)} {...rest} href={constructUrl(href)} />;
 };

@@ -49,4 +49,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  .text-link {
+    color: var(--color-link);
+  }
+  .text-link:hover {
+    text-decoration: underline;
+  }
 }
