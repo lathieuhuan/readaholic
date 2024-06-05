@@ -1,0 +1,12 @@
+.input {
+  color: hsl(228 100% 5%);
+  background-color: hsl(45 50% 97%);
+}
+.input:focus-within {
+  background-color: hsl(45, 50%, 99%);
+  box-shadow: 0 0 4px hsla(45 19% 66% / 0.5);
+}
+.input > .suffix {
+  color: hsl(228 100% 5% / 0.7);
+  padding-right: 6px;
+}
