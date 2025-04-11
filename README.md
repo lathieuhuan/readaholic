@@ -1,7 +1,8 @@
 ## Create Next App
 
-Command:
-pnpm dlx create-next-app@15.3.0 . --typescript --tailwind --eslint --app --src-dir --turbopack --import-alias "@/\*" --use-pnpm --skip-install
+```
+pnpm dlx create-next-app@15.3.0 . --typescript --tailwind --eslint --app --src-dir --turbopack --import-alias "@/*" --use-pnpm --skip-install
+```
 
 package.json
 ```
@@ -25,8 +26,9 @@ package.json
 
 ## shadcn
 
-Command:
+```
 pnpm dlx shadcn@latest init
+```
 
 package.json
 ```
@@ -39,26 +41,17 @@ package.json
     "react-dom": "19.1.0",
     "tailwind-merge": "3.2.0",
     "tw-animate-css": "1.2.5"
-},
-"devDependencies": {
-    "@eslint/eslintrc": "3.3.1",
-    "@tailwindcss/postcss": "4.1.3",
-    "@types/node": "20.17.30",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
-    "eslint": "9.24.0",
-    "eslint-config-next": "15.2.5",
-    "tailwindcss": "4.1.3",
-    "typescript": "5.8.3"
 }
 ```
 
 ## next-intl
 
-Command:
+```
 npm install next-intl
+```
 
 New or changed files:
+```
 ├── messages
 │   ├── en.json
 │   └── ...
@@ -73,8 +66,10 @@ New or changed files:
         └── [locale]
             ├── layout.tsx
             └── page.tsx
+```
+---
 
-### Note
+**Note**
 
 When running dev, you may encounter this error
 
@@ -82,5 +77,4 @@ When running dev, you may encounter this error
 A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up.
 ```
 
-It is caused by browser extensions like ColorZilla.
-Workaround: https://github.com/vercel/next.js/discussions/71577
+It is caused by some browser extensions like ColorZilla. Workaround: https://github.com/vercel/next.js/discussions/71577
