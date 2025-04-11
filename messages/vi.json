@@ -1,5 +1,16 @@
 {
   "HomePage": {
     "title": "Trang chủ"
+  },
+  "SettingsPage": {
+    "title": "Cài đặt"
+  },
+  "Navigation": {
+    "home": "Trang chủ",
+    "settings": "Cài đặt"
+  },
+  "LocaleSwitcher": {
+    "label": "Thay đổi ngôn ngữ",
+    "locale": "{locale, select, vi {🇻🇳 Tiếng Việt} en {🇺🇸 English} other {Unknown}}"
   }
 }

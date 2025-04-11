@@ -1,5 +1,16 @@
 {
   "HomePage": {
     "title": "Home"
+  },
+  "SettingsPage": {
+    "title": "Settings"
+  },
+  "Navigation": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, vi {🇻🇳 Tiếng Việt} en {🇺🇸 English} other {Unknown}}"
   }
 }
