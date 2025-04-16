@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { ReactNode, useTransition } from "react";
 
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue } from "@/lib/components/select";
 
 type Props = {
   children: ReactNode;

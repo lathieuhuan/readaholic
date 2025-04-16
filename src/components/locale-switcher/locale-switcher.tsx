@@ -1,7 +1,7 @@
 import { routing } from "@/i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
 
-import { SelectContent, SelectItem } from "@/components/ui/select";
+import { SelectContent, SelectItem } from "@/lib/components/select";
 import LocaleSwitcherSelect from "./locale-switcher-select";
 
 export default function LocaleSwitcher() {
