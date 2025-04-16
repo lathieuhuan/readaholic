@@ -5,28 +5,22 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Form } from "@/components/ui/form";
-import { FormInput } from "@/components/ui/form-input";
+import { Form } from "@/lib/components/form";
+import { FormInput } from "@/lib/form/form-input";
+import { authSchema } from "@/zod/auth-schema";
 
-const formSchema = z.object({
-  username: z
-    .string()
-    .nonempty()
-    .refine((value) => !/^\s+$/.test(value ?? ""), "INVALID_VALUE"),
-  password: z.string().nonempty().min(8),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<typeof authSchema>;
 
 export default function RegisterForm() {
   const t = useTranslations("AuthForm");
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(authSchema),
     defaultValues: {
       username: "",
       password: "",
     },
     mode: "onBlur",
+    reValidateMode: "onChange",
   });
 
   const onSubmit = (data: FormValues) => {
