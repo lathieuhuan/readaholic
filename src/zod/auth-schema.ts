@@ -7,3 +7,5 @@ export const authSchema = z.object({
     .refine((value) => !/^\s+$/.test(value ?? ""), "INVALID_VALUE"),
   password: z.string().nonempty().min(8),
 });
+
+export type AuthSchemaType = z.infer<typeof authSchema>;

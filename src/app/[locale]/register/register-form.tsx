@@ -3,17 +3,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
-import { Form } from "@/lib/components/form";
-import { FormInput } from "@/lib/form/form-input";
-import { authSchema } from "@/zod/auth-schema";
-
-type FormValues = z.infer<typeof authSchema>;
+import { Input } from "@/lib/components/input";
+import { Form, FormField } from "@/lib/form";
+import { authSchema, type AuthSchemaType } from "@/zod/auth-schema";
 
 export default function RegisterForm() {
   const t = useTranslations("AuthForm");
-  const form = useForm<FormValues>({
+  const form = useForm<AuthSchemaType>({
     resolver: zodResolver(authSchema),
     defaultValues: {
       username: "",
@@ -23,24 +20,19 @@ export default function RegisterForm() {
     reValidateMode: "onChange",
   });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = (data: AuthSchemaType) => {
     console.log(data);
   };
 
   return (
     <Form form={form} onSubmit={onSubmit}>
-      <FormInput
-        control={form.control}
-        name="username"
-        label={t("username")}
-        placeholder={t("username")}
-      />
-      <FormInput
-        control={form.control}
-        name="password"
-        label={t("password")}
-        placeholder={t("password")}
-      />
+      <FormField control={form.control} name="username" label={t("username")}>
+        <Input placeholder={t("username")} />
+      </FormField>
+
+      <FormField control={form.control} name="password" label={t("password")}>
+        <Input placeholder={t("password")} />
+      </FormField>
     </Form>
   );
 }
