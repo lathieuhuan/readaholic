@@ -1,4 +1,10 @@
 {
+  "AuthForm": {
+    "username": "Username",
+    "password": "Password",
+    "register": "Register",
+    "login": "Login"
+  },
   "HomePage": {
     "title": "Home"
   },
@@ -12,5 +18,11 @@
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, vi {🇻🇳 Tiếng Việt} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Errors": {
+    "required": "This field is required",
+    "min": "This field must be at least {min} characters long",
+    "max": "This field must be at most {max} characters long",
+    "invalid": "This field is invalid"
   }
 }

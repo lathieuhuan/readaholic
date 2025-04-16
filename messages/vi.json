@@ -1,4 +1,10 @@
 {
+  "AuthForm": {
+    "username": "Tên tài khoản",
+    "password": "Mật khẩu",
+    "register": "Đăng ký",
+    "login": "Đăng nhập"
+  },
   "HomePage": {
     "title": "Trang chủ"
   },
@@ -12,5 +18,11 @@
   "LocaleSwitcher": {
     "label": "Thay đổi ngôn ngữ",
     "locale": "{locale, select, vi {🇻🇳 Tiếng Việt} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Errors": {
+    "required": "Thông tin này là bắt buộc",
+    "min": "Thông tin này phải có ít nhất {min} ký tự",
+    "max": "Thông tin này phải có tối đa {max} ký tự",
+    "invalid": "Thông tin này không hợp lệ"
   }
 }
