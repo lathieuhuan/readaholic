@@ -6,8 +6,20 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils/functions";
 
-function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />;
+type SelectProps = React.ComponentProps<typeof SelectPrimitive.Root> & {
+  onChange?: (value: string) => void;
+};
+function Select({ ...props }: SelectProps) {
+  return (
+    <SelectPrimitive.Root
+      data-slot="select"
+      {...props}
+      onValueChange={(value) => {
+        props.onChange?.(value);
+        props.onValueChange?.(value);
+      }}
+    />
+  );
 }
 
 function SelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {

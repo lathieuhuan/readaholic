@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { getDomain } from "@/lib/utils";
+import { Button } from "@/lib/components/button";
+import { getDomain } from "@/lib/utils/functions";
 
 export default function AddBook() {
   const onAddBook = async () => {

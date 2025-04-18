@@ -1,9 +1,10 @@
+import { ErrorEncoder } from "@/lib/utils/error-process";
 import { z, ZodIssueCode, ZodParsedType } from "zod";
 
 const myErrorMap: z.ZodErrorMap = (issue, ctx) => {
   let message = ctx.defaultError;
 
-  console.log("issue");
+  console.log("=== issue");
   console.log(issue);
   console.log("message", message);
 
@@ -15,7 +16,11 @@ const myErrorMap: z.ZodErrorMap = (issue, ctx) => {
       break;
     case ZodIssueCode.too_small:
       if (issue.type === "string") {
-        message = "REQUIRED_INFO";
+        if (issue.minimum === 1) {
+          message = "REQUIRED_INFO";
+        } else {
+          message = ErrorEncoder.minLength(issue.minimum);
+        }
       }
       break;
   }

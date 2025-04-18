@@ -1,9 +1,12 @@
 {
-  "AuthForm": {
+  "RegisterForm": {
+    "title": "Create Account",
     "username": "Username",
     "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "message": "By creating an account, you agree to the Readaholic Terms of Service and Privacy Policy",
     "register": "Register",
-    "login": "Login"
+    "alreadyHaveAccount": "Already have an account?"
   },
   "HomePage": {
     "title": "Home"
@@ -20,9 +23,8 @@
     "locale": "{locale, select, vi {🇻🇳 Tiếng Việt} en {🇺🇸 English} other {Unknown}}"
   },
   "Errors": {
-    "required": "This field is required",
-    "min": "This field must be at least {min} characters long",
-    "max": "This field must be at most {max} characters long",
-    "invalid": "This field is invalid"
+    "REQUIRED_INFO": "This field is required",
+    "INCORRECT_PASSWORD_CONFIRM": "Incorrect password confirmation",
+    "MIN_LENGTH": "Please enter at least {min} characters"
   }
 }

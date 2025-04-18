@@ -1,4 +1,4 @@
-import { getDomain } from "@/lib/utils";
+import { getDomain } from "@/lib/utils/functions";
 import AddBook from "./add-book";
 
 export default async function BooksPage() {
