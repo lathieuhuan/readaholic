@@ -4,9 +4,9 @@ import { z, ZodIssueCode, ZodParsedType } from "zod";
 const myErrorMap: z.ZodErrorMap = (issue, ctx) => {
   let message = ctx.defaultError;
 
-  console.log("=== issue");
-  console.log(issue);
-  console.log("message", message);
+  // console.log("=== issue");
+  // console.log(issue);
+  // console.log("message", message);
 
   switch (issue.code) {
     case ZodIssueCode.invalid_type:
@@ -28,7 +28,7 @@ const myErrorMap: z.ZodErrorMap = (issue, ctx) => {
 };
 
 z.setErrorMap(myErrorMap);
-
-// console.log("This should run once!");
+			
+// console.log("==> This file run once on server and once for each request that uses zod");
 
 export { z };

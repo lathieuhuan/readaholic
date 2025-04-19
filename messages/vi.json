@@ -4,9 +4,10 @@
     "username": "Tên tài khoản",
     "password": "Mật khẩu",
     "confirmPassword": "Xác nhận mật khẩu",
-    "message": "Bằng cách tạo tài khoản, bạn đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của Readaholic",
+    "message": "Bằng cách tạo tài khoản, bạn đồng ý với <tof>Điều khoản dịch vụ</tof> và <pp>Chính sách bảo mật</pp> của Readaholic",
     "register": "Đăng ký",
-    "alreadyHaveAccount": "Đã có tài khoản?"
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "signIn": "Đăng nhập"
   },
   "HomePage": {
     "title": "Trang chủ"

@@ -10,16 +10,7 @@ type SelectProps = React.ComponentProps<typeof SelectPrimitive.Root> & {
   onChange?: (value: string) => void;
 };
 function Select({ ...props }: SelectProps) {
-  return (
-    <SelectPrimitive.Root
-      data-slot="select"
-      {...props}
-      onValueChange={(value) => {
-        props.onChange?.(value);
-        props.onValueChange?.(value);
-      }}
-    />
-  );
+  return <SelectPrimitive.Root data-slot="select" {...props} />;
 }
 
 function SelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {

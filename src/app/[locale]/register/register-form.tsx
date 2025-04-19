@@ -5,27 +5,37 @@ import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
+import { PasswordInput } from "@/components/password-input";
+import { TextLink } from "@/components/text-link";
 import { Button } from "@/lib/components/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/lib/components/card";
 import { Input } from "@/lib/components/input";
 import { Form, FormField } from "@/lib/form";
-import { authSchema, type AuthSchemaModel } from "@/zod/auth-schema";
+import { registerSchema, type RegisterSchema } from "@/zod/register-schema";
 
 export default function RegisterForm() {
   const t = useTranslations("RegisterForm");
-  const form = useForm<AuthSchemaModel>({
-    resolver: zodResolver(authSchema),
+  const form = useForm<RegisterSchema>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       username: "",
       password: "",
       confirmPassword: "",
     },
-    mode: "onBlur",
+    mode: "onTouched",
     reValidateMode: "onChange",
   });
 
-  const onSubmit = (data: AuthSchemaModel) => {
-    console.log(data);
+  const onSubmit = async (data: RegisterSchema) => {
+    const response = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const json = await response.json();
+    console.log(json);
   };
 
   const loading = false;
@@ -38,24 +48,25 @@ export default function RegisterForm() {
 
       <CardContent>
         <Form form={form} onSubmit={onSubmit} className="space-y-6">
-          <div className="grid gap-4">
+          <div className="grid gap-2">
             <FormField control={form.control} name="username" label={t("username")}>
               <Input />
             </FormField>
 
             <FormField control={form.control} name="password" label={t("password")}>
-              <Input />
+              <PasswordInput />
             </FormField>
 
             <FormField control={form.control} name="confirmPassword" label={t("confirmPassword")}>
-              <Input />
+              <PasswordInput />
             </FormField>
 
-            <p className="text-sm text-muted-foreground">{t("message")}</p>
-
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : t("register")}
-            </Button>
+            <p className="text-sm opacity-90">
+              {t.rich("message", {
+                tof: (chunks) => <TextLink href="/terms-of-service">{chunks}</TextLink>,
+                pp: (chunks) => <TextLink href="/privacy-policy">{chunks}</TextLink>,
+              })}
+            </p>
 
             {/* <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
               <span className="bg-background text-muted-foreground relative z-10 px-2">
@@ -73,11 +84,14 @@ export default function RegisterForm() {
             </Button> */}
           </div>
 
+          <div>
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : t("register")}
+            </Button>
+          </div>
+
           <div className="text-center text-sm">
-            {t("alreadyHaveAccount")}
-            {/* <a href="#" className="underline underline-offset-4">
-              {t("login")}
-            </a> */}
+            {t("alreadyHaveAccount")} <TextLink href="/sign-in">{t("signIn")}</TextLink>
           </div>
         </Form>
       </CardContent>

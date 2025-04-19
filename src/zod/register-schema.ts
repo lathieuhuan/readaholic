@@ -1,6 +1,6 @@
 import { z } from "./config";
 
-export const authSchema = z
+export const registerSchema = z
   .object({
     username: z
       .string()
@@ -19,4 +19,4 @@ export const authSchema = z
     }
   });
 
-export type AuthSchemaModel = z.infer<typeof authSchema>;
+export type RegisterSchema = z.infer<typeof registerSchema>;

@@ -1,10 +1,19 @@
+import { Slot } from "@radix-ui/react-slot";
 import clsx, { type ClassValue } from "clsx";
 import { useTranslations } from "next-intl";
 import { cloneElement, useId } from "react";
-import { Control, Controller, FieldPath, FieldValues } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  ControllerFieldState,
+  ControllerRenderProps,
+  FieldPath,
+  FieldValues,
+} from "react-hook-form";
 
+import { Label } from "@/lib/components/label";
 import { ErrorDecoder } from "@/lib/utils/error-process";
-import { FormControl, FormItem, FormLabel, FormMessage } from "./components";
+import { cn } from "@/lib/utils/functions";
 
 type FormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -15,7 +24,12 @@ type FormFieldProps<
   label: string;
   placeholder?: string;
   className?: ClassValue;
-  children: React.JSX.Element;
+  children:
+    | React.JSX.Element
+    | ((
+        field: ControllerRenderProps<TFieldValues, TName>,
+        fieldState: ControllerFieldState,
+      ) => React.JSX.Element);
 };
 
 export function FormField<
@@ -31,7 +45,8 @@ export function FormField<
     <Controller
       control={control}
       name={name}
-      render={({ field, fieldState: { error } }) => {
+      render={({ field, fieldState }) => {
+        const { error } = fieldState;
         let errorMsg = "";
 
         if (error?.message) {
@@ -39,21 +54,52 @@ export function FormField<
           errorMsg = t(decodedError.key, decodedError.params);
         }
 
+        let controlChild: React.JSX.Element | null = null;
+
+        if (typeof children === "function") {
+          controlChild = children(field, fieldState);
+        } //
+        else {
+          const mergedProps = Object.assign(
+            {
+              onValueChange: (value: string) => {
+                field.onChange(value);
+              },
+            },
+            children.props,
+            field,
+          );
+
+          controlChild = cloneElement(children, mergedProps);
+        }
+
         return (
-          <FormItem id={id} className={className}>
-            <FormLabel htmlFor={formItemId} data-error={!!error}>
+          <div id={id} data-slot="form-item" className={cn("mb-5 flex flex-col gap-1.5 relative", className)}>
+            <Label
+              htmlFor={formItemId}
+              data-slot="form-label"
+              data-error={!!error}
+              className="data-[error=true]:text-destructive"
+            >
               {label}
-            </FormLabel>
-            <FormControl
+            </Label>
+            <Slot
               id={formItemId}
+              data-slot="form-control"
               aria-describedby={clsx(`${id}-form-item-description`, error ? formMessageId : "")}
               aria-invalid={!!error}
             >
-              {cloneElement(children, Object.assign({}, children.props, field))}
-            </FormControl>
+              {controlChild}
+            </Slot>
             {/* <FormDescription>This is your public display name.</FormDescription> */}
-            <FormMessage id={formMessageId}>{errorMsg}</FormMessage>
-          </FormItem>
+            <p
+              id={formMessageId}
+              data-slot="form-message"
+              className="absolute top-full mt-0.5 text-destructive text-xs"
+            >
+              {errorMsg}
+            </p>
+          </div>
         );
       }}
     />

@@ -1,6 +1,6 @@
-import { db } from "@/lib/db";
-import { BooksTable } from "@/schemas/book";
-import { BookAddRequest } from "@/requests/book-request";
+import { db } from "@/repositories/db";
+import { BooksTable } from "@/models/book";
+import { BookAddRequest } from "@/types/requests/book-request";
 
 export async function addBook(request: BookAddRequest) {
   return await db

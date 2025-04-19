@@ -4,9 +4,10 @@
     "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm Password",
-    "message": "By creating an account, you agree to the Readaholic Terms of Service and Privacy Policy",
+    "message": "By creating an account, you agree to the Readaholic <tof>Terms of Service</tof> and <pp>Privacy Policy</pp>",
     "register": "Register",
-    "alreadyHaveAccount": "Already have an account?"
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In"
   },
   "HomePage": {
     "title": "Home"

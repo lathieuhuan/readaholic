@@ -1,4 +1,4 @@
-import { addBook, getBooks } from "@/services/book-service";
+import { addBook, getBooks } from "@/repositories/book-repository";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
