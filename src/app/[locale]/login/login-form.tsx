@@ -11,23 +11,22 @@ import { Button } from "@/lib/components/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/lib/components/card";
 import { Input } from "@/lib/components/input";
 import { Form, FormField } from "@/lib/form";
-import { registerSchema, type RegisterSchema } from "@/zod/register-schema";
+import { loginSchema, type LoginSchema } from "@/zod/login-schema";
 
-export default function RegisterForm() {
-  const t = useTranslations("RegisterForm");
-  const form = useForm<RegisterSchema>({
-    resolver: zodResolver(registerSchema),
+export default function LoginForm() {
+  const t = useTranslations("LoginForm");
+  const form = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
-      passwordConfirm: "",
     },
     mode: "onTouched",
     reValidateMode: "onChange",
   });
 
-  const onSubmit = async (data: RegisterSchema) => {
-    const response = await fetch("/api/register", {
+  const onSubmit = async (data: LoginSchema) => {
+    const response = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,20 +52,17 @@ export default function RegisterForm() {
               <Input />
             </FormField>
 
-            <FormField control={form.control} name="password" label={t("password")}>
-              <PasswordInput />
-            </FormField>
+            <div>
+              <FormField control={form.control} name="password" label={t("password")}>
+                <PasswordInput />
+              </FormField>
 
-            <FormField control={form.control} name="passwordConfirm" label={t("passwordConfirm")}>
-              <PasswordInput />
-            </FormField>
-
-            <p className="text-sm opacity-90">
-              {t.rich("message", {
-                tof: (chunks) => <TextLink href="/terms-of-service">{chunks}</TextLink>,
-                pp: (chunks) => <TextLink href="/privacy-policy">{chunks}</TextLink>,
-              })}
-            </p>
+              <div className="text-right text-sm">
+                <TextLink href="#" className="font-normal">
+                  {t("forgotPassword")}
+                </TextLink>
+              </div>
+            </div>
 
             {/* <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
               <span className="bg-background text-muted-foreground relative z-10 px-2">
@@ -86,12 +82,14 @@ export default function RegisterForm() {
 
           <div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : t("register")}
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : t("login")}
             </Button>
           </div>
 
           <div className="text-center text-sm">
-            {t("alreadyHaveAccount")} <TextLink href="/login">{t("login")}</TextLink>
+            {t.rich("newUserMessage", {
+              link: (chunks) => <TextLink href="/register">{chunks}</TextLink>,
+            })}
           </div>
         </Form>
       </CardContent>

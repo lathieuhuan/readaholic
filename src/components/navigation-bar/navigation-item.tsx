@@ -5,7 +5,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { ComponentProps } from "react";
 import { Link } from "@/i18n/navigation";
 
-export default function NavigationItem({
+export function NavigationItem({
   href,
   ...rest
 }: ComponentProps<typeof Link>) {

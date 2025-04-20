@@ -1,11 +1,11 @@
 "use client";
 
+import { DOMAIN } from "@/constants/config";
 import { Button } from "@/lib/components/button";
-import { getDomain } from "@/lib/utils/functions";
 
 export default function AddBook() {
   const onAddBook = async () => {
-    const response = await fetch(`${getDomain()}/api/books`, {
+    const response = await fetch(`${DOMAIN}/api/books`, {
       method: "POST",
       body: JSON.stringify({ name: "Book 1", author: "Author 1" }),
     });

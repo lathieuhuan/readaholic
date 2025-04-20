@@ -19,15 +19,13 @@ async function configureDatabase() {
 
   await sql`CREATE TABLE IF NOT EXISTS "users" (
     "id" serial PRIMARY KEY NOT NULL,
-    "username" varchar(60) NOT NULL,
-    "password" varchar(60) NOT NULL,
-    "email" varchar(60),
+    "email" varchar(64) NOT NULL,
+    "password" text NOT NULL,
+    "username" varchar(24),
     "joined_at" timestamp DEFAULT now() NOT NULL
   )`;
 
-  await sql`CREATE UNIQUE INDEX "username_idx" ON "users" USING btree ("username")`;
+  await sql`CREATE UNIQUE INDEX IF NOT EXISTS "email_idx" ON "users" USING btree ("email")`;
 }
-
-configureDatabase();
 
 export { sql, db, configureDatabase };

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { register } from "@/services/auth-service";
+import { login } from "@/services/auth-service";
 
 export async function POST(request: NextRequest) {
   const contentType = request.headers.get("Content-Type");
@@ -7,5 +7,5 @@ export async function POST(request: NextRequest) {
   if (contentType !== "application/json") {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
-  return register(request);
+  return login(request);
 }

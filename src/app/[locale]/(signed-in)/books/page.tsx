@@ -1,8 +1,8 @@
-import { getDomain } from "@/lib/utils/functions";
+import { DOMAIN } from "@/constants/config";
 import AddBook from "./add-book";
 
 export default async function BooksPage() {
-  const response = await fetch(`${getDomain()}/api/books`);
+  const response = await fetch(`${DOMAIN}/api/books`);
   const data = await response.json();
 
   console.log(data);

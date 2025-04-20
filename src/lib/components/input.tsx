@@ -44,6 +44,7 @@ function Input({
         <button
           type="button"
           className="absolute right-2 size-6 flex items-center justify-center text-foreground hover:text-destructive opacity-60"
+          tabIndex={-1}
           onClick={onClickClear}
         >
           <CircleX size={20} />

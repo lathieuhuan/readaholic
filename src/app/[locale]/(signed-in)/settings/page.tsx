@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
 import LocaleSwitcher from "@/components/locale-switcher";
+import UserProfile from "./user-profile";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -21,6 +22,8 @@ export default function SettingsPage({ params }: Props) {
       <div>
         <LocaleSwitcher />
       </div>
+
+      <UserProfile />
     </div>
   );
 }

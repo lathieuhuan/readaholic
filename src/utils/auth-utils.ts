@@ -1,12 +1,25 @@
 import * as jose from "jose";
 import { cookies } from "next/headers";
+import { pbkdf2Sync } from "node:crypto";
 
-const secret = jose.base64url.decode(process.env.JWT_SECRET_KEY!);
+const saltKey = process.env.SALT_KEY || "salt-key";
+
+export function hashPassword(password: string) {
+  return pbkdf2Sync(password, saltKey, 10000, 64, "sha512").toString("hex");
+}
+
+const secret = new TextEncoder().encode(process.env.JWT_SECRET_KEY!);
 const issuer = "urn:readaholic:issuer";
 const audience = "urn:readaholic:audience";
 
-export const encodeUserSession = async (userId: string) => {
-  const jwt = await new jose.EncryptJWT({ user: userId })
+type EncryptedInfo = {
+  userId: number;
+  email: string;
+  username: string | null;
+};
+
+const encodeUserSession = async (encryptedInfo: EncryptedInfo) => {
+  const jwt = await new jose.EncryptJWT(encryptedInfo)
     .setProtectedHeader({ alg: "dir", enc: "A128CBC-HS256" })
     .setIssuedAt()
     .setIssuer(issuer)
@@ -16,7 +29,7 @@ export const encodeUserSession = async (userId: string) => {
   return jwt;
 };
 
-export const decodeUserSession = async (jwt: string) => {
+const decodeUserSession = async (jwt: string) => {
   try {
     const { payload } = await jose.jwtDecrypt(jwt, secret, {
       issuer,
@@ -29,8 +42,8 @@ export const decodeUserSession = async (jwt: string) => {
   }
 };
 
-export const setUserSession = async (userId: string) => {
-  const jwt = await encodeUserSession(userId);
+export const setUserSession = async (encryptedInfo: EncryptedInfo) => {
+  const jwt = await encodeUserSession(encryptedInfo);
   const cookieStore = await cookies();
 
   cookieStore.set("session_id", jwt, {
@@ -45,4 +58,9 @@ export const getUserSession = async () => {
   const cookieStore = await cookies();
   const sessionId = cookieStore.get("session_id");
   return sessionId ? await decodeUserSession(sessionId.value) : null;
+};
+
+export const endUserSession = async () => {
+  const cookieStore = await cookies();
+  cookieStore.delete("session_id");
 };
