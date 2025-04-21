@@ -2,8 +2,8 @@ import { Locale, useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
-import LocaleSwitcher from "@/components/locale-switcher";
-import UserProfile from "./user-profile";
+import { LocaleSwitcher } from "@app/_components/locale-switcher";
+import { UserProfile } from "./user-profile";
 
 type Props = {
   params: Promise<{ locale: Locale }>;

@@ -11,9 +11,9 @@ import {
   FieldValues,
 } from "react-hook-form";
 
-import { Label } from "@/lib/components/label";
-import { ErrorDecoder } from "@/lib/utils/error-process";
-import { cn } from "@/lib/utils/functions";
+import { Label } from "@lib/components/label";
+import { ErrorDecoder } from "@lib/utils/error-process";
+import { cn } from "@lib/utils/functions";
 
 type FormFieldProps<
   TFieldValues extends FieldValues = FieldValues,

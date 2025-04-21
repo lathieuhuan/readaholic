@@ -1,6 +1,6 @@
 import { pgTable, serial, timestamp, uniqueIndex, varchar, text } from "drizzle-orm/pg-core";
 
-const UsersTable = pgTable(
+export const UsersTable = pgTable(
   "users",
   {
     id: serial("id").primaryKey().notNull(),
@@ -16,5 +16,4 @@ const UsersTable = pgTable(
   },
 );
 
-export { UsersTable };
 export type UserEntity = typeof UsersTable.$inferSelect;

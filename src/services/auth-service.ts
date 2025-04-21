@@ -1,51 +1,40 @@
-import { NextRequest, NextResponse } from "next/server";
-import { IssueData } from "zod";
-
+import { pbkdf2Sync } from "node:crypto";
 import { addUser, getUserByEmail } from "@/repositories/user-repository";
-import { hashPassword, setUserSession } from "@/utils/auth-utils";
-import { loginSchema } from "@/zod/login-schema";
-import { registerSchema } from "@/zod/register-schema";
 
-export async function register(request: NextRequest) {
-  const body = await request.json();
-  const { success, data, error } = registerSchema.safeParse(body);
+const saltKey = process.env.SALT_KEY || "salt-key";
 
-  if (success) {
-    const user = await addUser({
-      ...data,
-      password: hashPassword(data.password),
-    });
-    console.log(user);
-    return NextResponse.json({ message: "User created successfully" });
-  }
-  const issues: IssueData[] = JSON.parse(error.message);
-
-  return NextResponse.json({ error: issues }, { status: 400 });
+function hashPassword(password: string) {
+  return pbkdf2Sync(password, saltKey, 10000, 64, "sha512").toString("hex");
 }
 
-export async function login(request: NextRequest) {
-  const body = await request.json();
-  const { success, data, error } = loginSchema.safeParse(body);
+type RegisterRequest = {
+  // name?: string;
+  email: string;
+  password: string;
+};
 
-  if (success) {
-    const user = await getUserByEmail(data.email);
+export async function register(request: RegisterRequest) {
+  return await addUser({
+    ...request,
+    password: hashPassword(request.password),
+  });
+}
 
-    if (!user) {
-      return NextResponse.json({ error: "User not found" }, { status: 400 });
-    }
-    if (user.password !== hashPassword(data.password)) {
-      return NextResponse.json({ error: "Invalid password" }, { status: 400 });
-    }
+type LoginRequest = {
+  email: string;
+  password: string;
+};
 
-    await setUserSession({
-      userId: user.id,
-      email: user.email,
-      username: user.username,
-    });
+export async function login(request: LoginRequest) {
+  const user = await getUserByEmail(request.email);
 
-    return NextResponse.json({ message: "User signed in successfully" });
+  if (!user) {
+    throw new Error("User not found");
   }
-  const issues: IssueData[] = JSON.parse(error.message);
 
-  return NextResponse.json({ error: issues }, { status: 400 });
+  if (user.password !== hashPassword(request.password)) {
+    throw new Error("Invalid password");
+  }
+
+  return user;
 }

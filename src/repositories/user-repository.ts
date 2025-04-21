@@ -1,12 +1,13 @@
-import { UserEntity, UsersTable } from "@/models/user";
-import { db } from "@/repositories/db";
-import { RegisterRequest } from "@/types/requests/auth-request";
 import { eq } from "drizzle-orm";
+import { db } from "@/db";
+import { UsersTable, type UserEntity } from "@/db/user";
 
-export async function addUser(request: RegisterRequest) {
+export type AddUserParams = Pick<UserEntity, "email" | "password">;
+
+export async function addUser(params: AddUserParams) {
   return await db
     .insert(UsersTable)
-    .values({ email: request.email, password: request.password })
+    .values({ email: params.email, password: params.password })
     .returning();
 }
 

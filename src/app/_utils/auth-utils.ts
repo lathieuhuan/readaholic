@@ -1,12 +1,5 @@
 import * as jose from "jose";
 import { cookies } from "next/headers";
-import { pbkdf2Sync } from "node:crypto";
-
-const saltKey = process.env.SALT_KEY || "salt-key";
-
-export function hashPassword(password: string) {
-  return pbkdf2Sync(password, saltKey, 10000, 64, "sha512").toString("hex");
-}
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET_KEY!);
 const issuer = "urn:readaholic:issuer";

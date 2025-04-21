@@ -5,13 +5,15 @@ import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
-import { PasswordInput } from "@/components/password-input";
-import { TextLink } from "@/components/text-link";
-import { Button } from "@/lib/components/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/lib/components/card";
-import { Input } from "@/lib/components/input";
-import { Form, FormField } from "@/lib/form";
-import { registerSchema, type RegisterSchema } from "@/zod/register-schema";
+import { registerSchema, type RegisterSchema } from "@app/_validation-schemas/register-schema";
+
+// Components
+import { Form, FormField } from "@app/_components/form";
+import { PasswordInput } from "@app/_components/password-input";
+import { TextLink } from "@app/_components/text-link";
+import { Button } from "@lib/components/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@lib/components/card";
+import { Input } from "@lib/components/input";
 
 export default function RegisterForm() {
   const t = useTranslations("RegisterForm");

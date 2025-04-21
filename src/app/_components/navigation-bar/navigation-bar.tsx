@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { NavigationItem } from "./navigation-item";
 import { UserEntry } from "./user-entry";
 
-export default function NavigationBar() {
+export function NavigationBar() {
   const t = useTranslations("Navigation");
 
   return (

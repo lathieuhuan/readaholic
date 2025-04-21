@@ -1,11 +1,12 @@
-import { db } from "@/repositories/db";
-import { BooksTable } from "@/models/book";
-import { BookAddRequest } from "@/types/requests/book-request";
+import { db } from "@/db";
+import { BooksTable, type BookEntity } from "@/db/book";
 
-export async function addBook(request: BookAddRequest) {
+export type AddBookParams = Pick<BookEntity, "name" | "author">;
+
+export async function addBook(params: AddBookParams) {
   return await db
     .insert(BooksTable)
-    .values({ name: request.name, author: request.author })
+    .values({ name: params.name, author: params.author })
     .returning();
 }
 

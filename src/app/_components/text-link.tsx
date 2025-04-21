@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
-import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils/functions";
+import { Link } from "@app/_i18n/navigation";
+import { cn } from "@lib/utils/functions";
 
 type TextLinkProps = ComponentProps<typeof Link>;
 

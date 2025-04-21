@@ -1,7 +1,7 @@
 "use client";
 
-import { DOMAIN } from "@/constants/config";
-import { Button } from "@/lib/components/button";
+import { DOMAIN } from "@app/_constants/config";
+import { Button } from "@lib/components/button";
 
 export default function AddBook() {
   const onAddBook = async () => {

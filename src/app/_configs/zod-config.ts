@@ -1,4 +1,4 @@
-import { ErrorEncoder } from "@/lib/utils/error-process";
+import { ErrorEncoder } from "@lib/utils/error-process";
 import { z, ZodIssueCode, ZodParsedType } from "zod";
 
 const myErrorMap: z.ZodErrorMap = (issue, ctx) => {
@@ -28,7 +28,5 @@ const myErrorMap: z.ZodErrorMap = (issue, ctx) => {
 };
 
 z.setErrorMap(myErrorMap);
-			
-// console.log("==> This file run once on server and once for each request that uses zod");
 
-export { z };
+// console.log("==> This file should run once per client");

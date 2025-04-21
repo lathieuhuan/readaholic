@@ -1,6 +1,6 @@
-import { getUserSession } from "@/utils/auth-utils";
+import { getUserSession } from "@app/_utils/auth-utils";
 
-export default async function UserProfile() {
+export async function UserProfile() {
   const user = await getUserSession();
 
   return (

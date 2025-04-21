@@ -1,4 +1,4 @@
-import { DOMAIN } from "@/constants/config";
+import { DOMAIN } from "@app/_constants/config";
 import AddBook from "./add-book";
 
 export default async function BooksPage() {

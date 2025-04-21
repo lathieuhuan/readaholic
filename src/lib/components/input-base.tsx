@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@/lib/utils/functions";
+import { cn } from "@lib/utils/functions";
 
 type InputBaseProps = React.ComponentProps<"input">;
 

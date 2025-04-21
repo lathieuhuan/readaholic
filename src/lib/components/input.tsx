@@ -2,7 +2,7 @@ import { CircleX } from "lucide-react";
 import * as React from "react";
 import { useRef } from "react";
 
-import { cn, mergeRefs } from "@/lib/utils/functions";
+import { cn, mergeRefs } from "@lib/utils/functions";
 import { InputBase } from "./input-base";
 import { Button, type ButtonProps } from "./button";
 

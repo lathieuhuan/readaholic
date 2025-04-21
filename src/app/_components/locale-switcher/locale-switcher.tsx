@@ -1,10 +1,10 @@
-import { routing } from "@/i18n/routing";
+import { routing } from "@app/_i18n/routing";
 import { useLocale, useTranslations } from "next-intl";
 
-import { SelectContent, SelectItem } from "@/lib/components/select";
+import { SelectContent, SelectItem } from "@lib/components/select";
 import LocaleSwitcherSelect from "./locale-switcher-select";
 
-export default function LocaleSwitcher() {
+export function LocaleSwitcher() {
   const t = useTranslations("LocaleSwitcher");
   const locale = useLocale();
 

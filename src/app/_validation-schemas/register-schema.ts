@@ -1,5 +1,5 @@
-import { z } from "./config";
-import { StringUtils } from "@/lib/utils/string-utils";
+import { z } from "zod";
+import { StringUtils } from "@lib/utils/string-utils";
 
 export const registerSchema = z
   .object({

@@ -1,4 +1,4 @@
-import { endUserSession } from "@/utils/auth-utils";
+import { endUserSession } from "@app/_utils/auth-utils";
 import { NextResponse } from "next/server";
 
 export async function POST() {
