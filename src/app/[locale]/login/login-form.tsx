@@ -15,7 +15,7 @@ import { Button } from "@lib/components/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@lib/components/card";
 import { Input } from "@lib/components/input";
 
-export default function LoginForm() {
+export function LoginForm() {
   const t = useTranslations("LoginForm");
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -28,7 +28,7 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data: LoginSchema) => {
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

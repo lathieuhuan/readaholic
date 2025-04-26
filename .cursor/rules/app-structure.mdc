@@ -1,0 +1,17 @@
+---
+description: 
+globs: src/app/**/*
+alwaysApply: false
+---
+The app directory follow NextJS app router where src/[locale] is the View layer and src/api is the Controller layer.
+
+src/app
+├─── [locale]
+├─── api
+├─── _configs
+├─── _constants
+├─── _utils
+├─── _types
+├─── _messages
+├─── _services
+├─── _validation-schemas

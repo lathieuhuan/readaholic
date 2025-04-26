@@ -4,7 +4,7 @@ import { Locale } from "next-intl";
 import { useParams } from "next/navigation";
 import { ReactNode, useTransition } from "react";
 
-import { usePathname, useRouter } from "@app/_i18n/navigation";
+import { usePathname, useRouter } from "@app/_hooks/navigation";
 import { Select, SelectTrigger, SelectValue } from "@lib/components/select";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
   label: string;
 };
 
-export default function LocaleSwitcherSelect({ children, defaultValue, label }: Props) {
+export function LocaleSwitcherSelect({ children, defaultValue, label }: Props) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();

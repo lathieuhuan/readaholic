@@ -1,18 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { IssueData } from "zod";
 
 import { setUserSession } from "@app/_utils/auth-utils";
 import { loginSchema } from "@app/_validation-schemas/login-schema";
+import { baseProcedure } from "@app/api/_procedure/base-procedure";
 import { login } from "@services/auth-service";
 
-export async function POST(request: NextRequest) {
-  const contentType = request.headers.get("Content-Type");
-
-  if (contentType !== "application/json") {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
-  }
-  const body = await request.json();
-  const { success, data, error } = loginSchema.safeParse(body);
+export const POST = baseProcedure.createHandler(async (request, ctx) => {
+  const { success, data, error } = loginSchema.safeParse(ctx.body);
 
   if (success) {
     const user = await login(data);
@@ -28,4 +23,4 @@ export async function POST(request: NextRequest) {
   const issues: IssueData[] = JSON.parse(error.message);
 
   return NextResponse.json({ error: issues }, { status: 400 });
-}
+});

@@ -1,5 +1,5 @@
 import { pbkdf2Sync } from "node:crypto";
-import { addUser, getUserByEmail } from "@/repositories/user-repository";
+import * as UserRepo from "@repositories/user-repository";
 
 const saltKey = process.env.SALT_KEY || "salt-key";
 
@@ -14,7 +14,7 @@ type RegisterRequest = {
 };
 
 export async function register(request: RegisterRequest) {
-  return await addUser({
+  return await UserRepo.addUser({
     ...request,
     password: hashPassword(request.password),
   });
@@ -26,7 +26,7 @@ type LoginRequest = {
 };
 
 export async function login(request: LoginRequest) {
-  const user = await getUserByEmail(request.email);
+  const user = await UserRepo.getUserByEmail(request.email);
 
   if (!user) {
     throw new Error("User not found");

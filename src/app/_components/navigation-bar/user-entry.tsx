@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@lib/components/button";
-import { redirect } from "@app/_i18n/navigation";
+import { redirect } from "@app/_utils/navigation";
 
 export function UserEntry(props: { className?: string }) {
   const onClickLogout = async () => {

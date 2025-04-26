@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { Link } from "@app/_i18n/navigation";
-import LoginForm from "./login-form";
+import { Link } from "@app/_components/link";
+import { LoginForm } from "./login-form";
 
 export default function Register() {
   return (

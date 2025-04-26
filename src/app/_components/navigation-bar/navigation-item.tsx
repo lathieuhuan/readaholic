@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { ComponentProps } from "react";
-import { Link } from "@app/_i18n/navigation";
+import { Link } from "@app/_components/link";
 
 export function NavigationItem({
   href,

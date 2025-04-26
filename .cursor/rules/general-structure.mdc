@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Source code structure
+
+src
+├─── app
+│    ├─── [locale]
+│    └─── api
+├─── services
+├─── repositories
+├─── db
+└─── lib
+
+# Source code design
+
+There are 4 main layers from lowest to highest: Database, Repositories, Services, View + Controller.
+Each layer can only use the APIs of the layer right below it.
+
+## Database
+
+The database itself is a postgresql db provided by neon. The package drizzle is used for ORM (Object-Relational Mapping).
+
+## Repositories
+
+This is the intermediary layer between the Database layer and the Services layer. It abstracts the implementation of the Database layer, and provides the Services layer with APIs for some specific data query.
+
+## Services
+
+This layer uses APIs from the repositories to carry out business logic, and provides those logic to the MVC layer.
+
+## View + Controller
+
+This layer is written in NextJS app router. It has 2 sub-layers: View in src/[locale], and Controller in src/api.
+
+- View is located in src/[locale] folder. It contains route components arranged in app router format.
+- Controller is located in src/api folder and follows NextJS route handlers pattern. You can find the document here https://nextjs.org/docs/app/building-your-application/routing/route-handlers.
+
+
+
+

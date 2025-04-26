@@ -3,7 +3,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
-import { routing } from "@app/_i18n/routing";
+import { Toaster } from "@app/_components/toaster";
+import { routing } from "@app/_configs/next-intl/routing";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -38,6 +39,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <Toaster expand richColors position="top-right" />
       </body>
     </html>
   );
