@@ -1,0 +1,33 @@
+{
+  "HomePage": {
+    "title": "Trang chủ"
+  },
+  "RegisterForm": {
+    "title": "Tạo tài khoản",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "passwordConfirm": "Xác nhận mật khẩu",
+    "message": "Bằng cách tạo tài khoản, bạn đồng ý với <tof>Điều khoản dịch vụ</tof> và <pp>Chính sách bảo mật</pp> của Readaholic",
+    "register": "Đăng ký",
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "login": "Đăng nhập"
+  },
+  "LoginForm": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "login": "Đăng nhập",
+    "forgotPassword": "Quên mật khẩu?",
+    "newUserMessage": "Chưa có tài khoản? <link>Tạo tài khoản</link>"
+  },
+  "FormErrors": {
+    "REQUIRED_INFO": "Thông tin này là bắt buộc",
+    "INVALID_VALUE": "Thông tin không hợp lệ",
+    "INCORRECT_PASSWORD_CONFIRM": "Mật khẩu xác nhận không khớp",
+    "MIN_LENGTH": "Vui lòng nhập ít nhất {min} ký tự"
+  },
+  "AuthServiceErrors": {
+    "INVALID_LOGIN_INFO": "Thông tin đăng nhập không hợp lệ",
+    "USED_EMAIL": "Email đã được sử dụng"
+  }
+}

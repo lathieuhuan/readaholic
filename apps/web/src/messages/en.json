@@ -1,0 +1,33 @@
+{
+  "HomePage": {
+    "title": "Home"
+  },
+  "RegisterForm": {
+    "title": "Create Account",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirm": "Confirm Password",
+    "message": "By creating an account, you agree to the Readaholic <tof>Terms of Service</tof> and <pp>Privacy Policy</pp>",
+    "register": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "LoginForm": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "forgotPassword": "Forgot Password?",
+    "newUserMessage": "New to Readaholic? <link>Create an account</link>"
+  },
+  "FormErrors": {
+    "REQUIRED_INFO": "This field is required",
+    "INVALID_VALUE": "Invalid information",
+    "INCORRECT_PASSWORD_CONFIRM": "Incorrect password confirmation",
+    "MIN_LENGTH": "Please enter at least {min} characters"
+  },
+  "AuthServiceErrors": {
+    "INVALID_LOGIN_INFO": "Invalid login information",
+    "USED_EMAIL": "Email already in use"
+  }
+}
